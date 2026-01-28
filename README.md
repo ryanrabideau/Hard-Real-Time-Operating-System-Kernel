@@ -1,4 +1,4 @@
-# Hard Real-Time RTOS Kernel Simulation in C
+# Hard RTOS Kernel Simulation in C
 
 A minimal, deterministic hard real-time RTOS kernel simulation written in pure C11, executed in userspace on Linux. Built to master core RTOS concepts: fixed-priority preemptive scheduling, priority-inheritance mutexes, static memory management, deadline monitoring, watchdog fault detection, and formal schedulability analysis, all without dynamic allocation, threads, or external dependencies.
 
