@@ -1,6 +1,6 @@
 # Hard Real-Time Operating System Kernel
 
-A minimal, deterministic, hard real-time operating system kernel written in pure C11, fully simulated in userspace on Linux. Built to master core RTOS concepts: fixed-priority preemptive scheduling, priority-inheritance mutexes, static memory management, deadline monitoring, watchdog fault detection, and formal schedulability analysis — all without dynamic allocation, threads, or external dependencies.
+A minimal, deterministic, hard real-time operating system kernel written in pure C11, fully simulated in userspace on Linux. Built to master core RTOS concepts: fixed-priority preemptive scheduling, priority-inheritance mutexes, static memory management, deadline monitoring, watchdog fault detection, and formal schedulability analysis, all without dynamic allocation, threads, or external dependencies.
 
 ## Project Overview
 
@@ -11,7 +11,7 @@ This project implements a tiny hard RTOS kernel that runs deterministically in a
 - Detect timing faults (deadline misses, stalls)
 - Provide formal analysis (Liu & Layland bound, response times, measured vs theoretical)
 
-No hardware, drivers, or real-time OS APIs — everything is self-contained and testable on any Linux desktop.
+No hardware, drivers, or real-time OS APIs. Everything is self-contained and testable on any Linux desktop.
 
 ## Features
 
@@ -26,21 +26,10 @@ No hardware, drivers, or real-time OS APIs — everything is self-contained and 
 
 ## Project Structure
 
-minimal-rtos/
-├── docs/                     # Design docs and formal analysis
-│   ├── manifesto.md
-│   ├── design.md
-│   ├── scheduling_policy.md
-│   ├── memory_model.md
-│   ├── schedulability_analysis.md
-│   └── timing_results.md
-├── include/
-│   └── kernel.h
-├── kernel/
-│   ├── kernel.c
-│   └── task.c
-├── main.c                    # Simulation harness + test scenarios
-
+- docs/ — Design docs and formal analysis (manifesto.md, design.md, scheduling_policy.md, memory_model.md, schedulability_analysis.md, timing_results.md)
+- include/ — Shared headers (kernel.h)
+- kernel/ — Core kernel files (kernel.c, task.c)
+- main.c — Simulation harness + test scenarios
 
 ## Prerequisites & Build
 
@@ -55,10 +44,12 @@ gcc -std=c11 -Wall -Wextra -Iinclude -c kernel/kernel.c -o kernel.o
 gcc -std=c11 -Wall -Wextra -Iinclude -c kernel/task.c -o task.o
 gcc main.o kernel.o task.o -o minimal-rtos
 ./minimal-rtos
+```
 
 Change int scenario = 1; in main.c to test different modes (overload, deadline miss, etc.).
 
 ## Skills Covered
+
 - Real-time systems design: Rate Monotonic scheduling, priority inheritance, response-time analysis
 - Deterministic programming: static allocation, no dynamic memory in RT paths
 - Fault tolerance: deadline monitoring, watchdog, overflow detection
